@@ -132,10 +132,16 @@ function GeneralInfoGroup({ changeDisplayFunction, handleCvInfoChange, data }) {
   );
 }
 
-function EducationInfoGroup({ changeDisplayFunction, addInfoGroup, data }) {
+function EducationInfoGroup({
+  changeDisplayFunction,
+  handleCvInfoChange,
+  addInfoGroup,
+  data,
+}) {
   EducationInfoGroup.propTypes = {
     changeDisplayFunction: PropTypes.func,
     addInfoGroup: PropTypes.func,
+    handleCvInfoChange: PropTypes.func,
     data: PropTypes.array,
   };
 
@@ -149,6 +155,15 @@ function EducationInfoGroup({ changeDisplayFunction, addInfoGroup, data }) {
             type="text"
             name={'schoolName' + index}
             id={'schoolName' + index}
+            defaultValue={data[index].schoolName}
+            onChange={(event) => {
+              handleCvInfoChange(
+                'education',
+                'schoolName',
+                event.target.value,
+                index
+              );
+            }}
           />
         </div>
         <div className="input-group">
@@ -157,6 +172,15 @@ function EducationInfoGroup({ changeDisplayFunction, addInfoGroup, data }) {
             type="text"
             name={'titleOfStudy' + index}
             id={'titleOfStudy' + index}
+            defaultValue={data[index].titleOfStudy}
+            onChange={(event) => {
+              handleCvInfoChange(
+                'education',
+                'titleOfStudy',
+                event.target.value,
+                index
+              );
+            }}
           />
         </div>
         <div className="input-group">
@@ -165,6 +189,15 @@ function EducationInfoGroup({ changeDisplayFunction, addInfoGroup, data }) {
             type="date"
             name={'startDate' + index}
             id={'startDate' + index}
+            defaultValue={data[index].startDate}
+            onChange={(event) => {
+              handleCvInfoChange(
+                'education',
+                'startDate',
+                event.target.value,
+                index
+              );
+            }}
           />
         </div>
         <div className="input-group">
@@ -173,6 +206,15 @@ function EducationInfoGroup({ changeDisplayFunction, addInfoGroup, data }) {
             type="date"
             name={'finishDate' + index}
             id={'finishDate' + index}
+            defaultValue={data[index].finishDate}
+            onChange={(event) => {
+              handleCvInfoChange(
+                'education',
+                'finishDate',
+                event.target.value,
+                index
+              );
+            }}
           />
         </div>
       </div>
@@ -204,10 +246,16 @@ function EducationInfoGroup({ changeDisplayFunction, addInfoGroup, data }) {
   );
 }
 
-function ExperienceInfoGroup({ changeDisplayFunction, addInfoGroup, data }) {
+function ExperienceInfoGroup({
+  changeDisplayFunction,
+  handleCvInfoChange,
+  addInfoGroup,
+  data,
+}) {
   ExperienceInfoGroup.propTypes = {
     changeDisplayFunction: PropTypes.func,
     addInfoGroup: PropTypes.func,
+    handleCvInfoChange: PropTypes.func,
     data: PropTypes.array,
   };
 
@@ -221,6 +269,15 @@ function ExperienceInfoGroup({ changeDisplayFunction, addInfoGroup, data }) {
             type="text"
             name={'companyName' + index}
             id={'companyName' + index}
+            defaultValue={data[index].companyName}
+            onChange={(event) => {
+              handleCvInfoChange(
+                'experience',
+                'companyName',
+                event.target.value,
+                index
+              );
+            }}
           />
         </div>
         <div className="input-group">
@@ -229,6 +286,15 @@ function ExperienceInfoGroup({ changeDisplayFunction, addInfoGroup, data }) {
             type="text"
             name={'positionTitle' + index}
             id={'positionTitle' + index}
+            defaultValue={data[index].positionTitle}
+            onChange={(event) => {
+              handleCvInfoChange(
+                'experience',
+                'positionTitle',
+                event.target.value,
+                index
+              );
+            }}
           />
         </div>
         <div className="input-group">
@@ -239,6 +305,15 @@ function ExperienceInfoGroup({ changeDisplayFunction, addInfoGroup, data }) {
             type="text"
             name={'mainResponsibilities' + index}
             id={'mainResponsibilities' + index}
+            defaultValue={data[index].mainResponsibilities}
+            onChange={(event) => {
+              handleCvInfoChange(
+                'experience',
+                'mainResponsibilities',
+                event.target.value,
+                index
+              );
+            }}
           />
         </div>
         <div className="input-group">
@@ -247,6 +322,15 @@ function ExperienceInfoGroup({ changeDisplayFunction, addInfoGroup, data }) {
             type="date"
             name={'startDate' + index}
             id={'startDate' + index}
+            defaultValue={data[index].startDate}
+            onChange={(event) => {
+              handleCvInfoChange(
+                'experience',
+                'startDate',
+                event.target.value,
+                index
+              );
+            }}
           />
         </div>
         <div className="input-group">
@@ -255,6 +339,15 @@ function ExperienceInfoGroup({ changeDisplayFunction, addInfoGroup, data }) {
             type="date"
             name={'finishDate' + index}
             id={'finishDate' + index}
+            defaultValue={data[index].finishDate}
+            onChange={(event) => {
+              handleCvInfoChange(
+                'experience',
+                'finishDate',
+                event.target.value,
+                index
+              );
+            }}
           />
         </div>
       </div>

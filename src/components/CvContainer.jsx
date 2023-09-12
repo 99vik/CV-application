@@ -9,9 +9,13 @@ export default function CvContainer() {
   const [currentCvDisplay, setCurrentCvDisplay] = useState(displayStates[0]);
   const [CvInformation, setCvInformation] = useState(emptyCvInfo);
 
-  function handleCvInfoChange(infoGroup, information, newValue) {
+  function handleCvInfoChange(infoGroup, information, newValue, index = null) {
     const newCvInformation = CvInformation;
-    newCvInformation[infoGroup][information] = newValue;
+    if (index === null) {
+      newCvInformation[infoGroup][information] = newValue;
+    } else {
+      newCvInformation[infoGroup][index][information] = newValue;
+    }
     setCvInformation(newCvInformation);
   }
 
