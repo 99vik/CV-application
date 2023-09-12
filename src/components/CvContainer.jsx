@@ -9,6 +9,12 @@ export default function CvContainer() {
   const [currentCvDisplay, setCurrentCvDisplay] = useState(displayStates[0]);
   const [CvInformation, setCvInformation] = useState(emptyCvInfo);
 
+  function handleCvInfoChange(infoGroup, information, newValue) {
+    const newCvInformation = CvInformation;
+    newCvInformation[infoGroup][information] = newValue;
+    setCvInformation(newCvInformation);
+  }
+
   return (
     <div className="cv-container">
       <div className="buttons-container">
@@ -47,6 +53,7 @@ export default function CvContainer() {
             data={CvInformation[currentCvDisplay]}
             displayedData={currentCvDisplay}
             changeDisplayFunction={setCurrentCvDisplay}
+            handleCvInfoChange={handleCvInfoChange}
           />
         )}
       </div>
