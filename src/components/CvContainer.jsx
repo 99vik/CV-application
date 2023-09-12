@@ -13,28 +13,43 @@ export default function CvContainer() {
     <div className="cv-container">
       <div className="buttons-container">
         <div>
-          <button onClick={() => setCurrentCvDisplay(displayStates[0])}>
+          <button
+            className={currentCvDisplay === 'general' && 'active'}
+            onClick={() => setCurrentCvDisplay(displayStates[0])}
+          >
             General
           </button>
-          <button onClick={() => setCurrentCvDisplay(displayStates[1])}>
+          <button
+            className={currentCvDisplay === 'education' && 'active'}
+            onClick={() => setCurrentCvDisplay(displayStates[1])}
+          >
             Education
           </button>
-          <button onClick={() => setCurrentCvDisplay(displayStates[2])}>
+          <button
+            className={currentCvDisplay === 'experience' && 'active'}
+            onClick={() => setCurrentCvDisplay(displayStates[2])}
+          >
             Professional Experience
           </button>
         </div>
-        <button onClick={() => setCurrentCvDisplay(displayStates[3])}>
+        <button
+          className={currentCvDisplay === 'previewCv' && 'active'}
+          onClick={() => setCurrentCvDisplay(displayStates[3])}
+        >
           Preview CV
         </button>
       </div>
-      {currentCvDisplay === 'previewCv' ? (
-        <PreviewCv data={CvInformation} />
-      ) : (
-        <Form
-          data={CvInformation[currentCvDisplay]}
-          displayedData={currentCvDisplay}
-        />
-      )}
+      <div className="display-container">
+        {currentCvDisplay === 'previewCv' ? (
+          <PreviewCv data={CvInformation} />
+        ) : (
+          <Form
+            data={CvInformation[currentCvDisplay]}
+            displayedData={currentCvDisplay}
+            changeDisplayFunction={setCurrentCvDisplay}
+          />
+        )}
+      </div>
     </div>
   );
 }

@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 
-export default function Form({ data, displayedData }) {
+export default function Form({ data, displayedData, changeDisplayFuntion }) {
   Form.propTypes = {
     data: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     displayedData: PropTypes.string,
+    changeDisplayFuntion: PropTypes.func,
   };
 
   function displayInputGroup() {

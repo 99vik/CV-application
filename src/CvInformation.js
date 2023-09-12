@@ -8,7 +8,7 @@ export const CvInformation = {
   },
   education: [
     {
-      scoolName: '',
+      schoolName: '',
       titleOfStudy: '',
       startDate: '',
       finishDate: '',
