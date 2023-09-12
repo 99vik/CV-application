@@ -15,6 +15,27 @@ export default function CvContainer() {
     setCvInformation(newCvInformation);
   }
 
+  function addInfoGroup(infoGroup) {
+    const newInfo = structuredClone(CvInformation);
+    if (infoGroup === 'education') {
+      newInfo.education.push({
+        schoolName: '',
+        titleOfStudy: '',
+        startDate: '',
+        finishDate: '',
+      });
+    } else {
+      newInfo.experience.push({
+        companyName: '',
+        positionTitle: '',
+        mainResponsibilities: '',
+        startDate: '',
+        finishDate: '',
+      });
+    }
+    setCvInformation(newInfo);
+  }
+
   return (
     <div className="cv-container">
       <div className="buttons-container">
@@ -54,6 +75,7 @@ export default function CvContainer() {
             displayedData={currentCvDisplay}
             changeDisplayFunction={setCurrentCvDisplay}
             handleCvInfoChange={handleCvInfoChange}
+            addInfoGroup={addInfoGroup}
           />
         )}
       </div>

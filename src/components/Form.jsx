@@ -1,17 +1,20 @@
 import PropTypes from 'prop-types';
 import ArrowIcon from '../assets/arrow-right.svg';
+import PlusIcon from '../assets/plus-box.svg';
 
 export default function Form({
   data,
   displayedData,
   changeDisplayFunction,
   handleCvInfoChange,
+  addInfoGroup,
 }) {
   Form.propTypes = {
     data: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     displayedData: PropTypes.string,
     changeDisplayFunction: PropTypes.func,
     handleCvInfoChange: PropTypes.func,
+    addInfoGroup: PropTypes.func,
   };
 
   function displayInputGroup() {
@@ -29,6 +32,8 @@ export default function Form({
           <EducationInfoGroup
             changeDisplayFunction={changeDisplayFunction}
             handleCvInfoChange={handleCvInfoChange}
+            addInfoGroup={addInfoGroup}
+            data={data}
           />
         );
       case 'experience':
@@ -36,12 +41,12 @@ export default function Form({
           <ExperienceInfoGroup
             changeDisplayFunction={changeDisplayFunction}
             handleCvInfoChange={handleCvInfoChange}
+            addInfoGroup={addInfoGroup}
+            data={data}
           />
         );
     }
   }
-
-  console.log(data);
 
   return <form action="">{displayInputGroup()}</form>;
 }
@@ -117,7 +122,7 @@ function GeneralInfoGroup({ changeDisplayFunction, handleCvInfoChange, data }) {
       </div>
       <button
         onClick={(event) => {
-          event.preventDefault;
+          event.preventDefault();
           changeDisplayFunction('education');
         }}
       >
@@ -127,32 +132,69 @@ function GeneralInfoGroup({ changeDisplayFunction, handleCvInfoChange, data }) {
   );
 }
 
-function EducationInfoGroup({ changeDisplayFunction }) {
+function EducationInfoGroup({ changeDisplayFunction, addInfoGroup, data }) {
   EducationInfoGroup.propTypes = {
     changeDisplayFunction: PropTypes.func,
+    addInfoGroup: PropTypes.func,
+    data: PropTypes.array,
   };
+
+  const inputGroups = data.map((group, index) => {
+    return (
+      <div className="input-group" key={index}>
+        {index !== 0 ? <hr /> : null}
+        <div className="input-group">
+          <label htmlFor={'schoolName' + index}>School name</label>
+          <input
+            type="text"
+            name={'schoolName' + index}
+            id={'schoolName' + index}
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor={'titleOfStudy' + index}>Title of Study</label>
+          <input
+            type="text"
+            name={'titleOfStudy' + index}
+            id={'titleOfStudy' + index}
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor={'startDate' + index}>Start date</label>
+          <input
+            type="date"
+            name={'startDate' + index}
+            id={'startDate' + index}
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor={'finishDate' + index}>Finish date</label>
+          <input
+            type="date"
+            name={'finishDate' + index}
+            id={'finishDate' + index}
+          />
+        </div>
+      </div>
+    );
+  });
 
   return (
     <>
-      <div className="input-group">
-        <label htmlFor="schoolName">School name</label>
-        <input type="text" name="schoolName" id="schoolName" />
-      </div>
-      <div className="input-group">
-        <label htmlFor="titleOfStudy">Title of Study</label>
-        <input type="text" name="titleOfStudy" id="titleOfStudy" />
-      </div>
-      <div className="input-group">
-        <label htmlFor="startDate">Start date</label>
-        <input type="date" name="startDate" id="startDate" />
-      </div>
-      <div className="input-group">
-        <label htmlFor="finishDate">Finish date</label>
-        <input type="date" name="finishDate" id="finishDate" />
-      </div>
       <button
         onClick={(event) => {
-          event.preventDefault;
+          event.preventDefault();
+          addInfoGroup('education');
+        }}
+      >
+        Add education
+        <img src={PlusIcon} alt="plus" />
+      </button>
+      {inputGroups}
+
+      <button
+        onClick={(event) => {
+          event.preventDefault();
           changeDisplayFunction('experience');
         }}
       >
@@ -162,40 +204,79 @@ function EducationInfoGroup({ changeDisplayFunction }) {
   );
 }
 
-function ExperienceInfoGroup({ changeDisplayFunction }) {
+function ExperienceInfoGroup({ changeDisplayFunction, addInfoGroup, data }) {
   ExperienceInfoGroup.propTypes = {
     changeDisplayFunction: PropTypes.func,
+    addInfoGroup: PropTypes.func,
+    data: PropTypes.array,
   };
+
+  const inputGroups = data.map((group, index) => {
+    return (
+      <div className="input-group" key={index}>
+        {index !== 0 ? <hr /> : null}
+        <div className="input-group">
+          <label htmlFor={'companyName' + index}>Company name</label>
+          <input
+            type="text"
+            name={'companyName' + index}
+            id={'companyName' + index}
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor={'positionTitle' + index}>Position title</label>
+          <input
+            type="text"
+            name={'positionTitle' + index}
+            id={'positionTitle' + index}
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor={'mainResponsibilities' + index}>
+            Main responsibilities
+          </label>
+          <input
+            type="text"
+            name={'mainResponsibilities' + index}
+            id={'mainResponsibilities' + index}
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor={'startDate' + index}>Start date</label>
+          <input
+            type="date"
+            name={'startDate' + index}
+            id={'startDate' + index}
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor={'finishDate' + index}>Finish date</label>
+          <input
+            type="date"
+            name={'finishDate' + index}
+            id={'finishDate' + index}
+          />
+        </div>
+      </div>
+    );
+  });
 
   return (
     <>
-      <div className="input-group">
-        <label htmlFor="companyName">Company name</label>
-        <input type="text" name="companyName" id="companyName" />
-      </div>
-      <div className="input-group">
-        <label htmlFor="positionTitle">Position title</label>
-        <input type="text" name="positionTitle" id="positionTitle" />
-      </div>
-      <div className="input-group">
-        <label htmlFor="mainResponsibilities">Main responsibilities</label>
-        <input
-          type="text"
-          name="mainResponsibilities"
-          id="mainResponsibilities"
-        />
-      </div>
-      <div className="input-group">
-        <label htmlFor="startDate">Start date</label>
-        <input type="date" name="startDate" id="startDate" />
-      </div>
-      <div className="input-group">
-        <label htmlFor="finishDate">Finish date</label>
-        <input type="date" name="finishDate" id="finishDate" />
-      </div>
       <button
         onClick={(event) => {
-          event.preventDefault;
+          event.preventDefault();
+          addInfoGroup('experience');
+        }}
+      >
+        Add job
+        <img src={PlusIcon} alt="plus" />
+      </button>
+      {inputGroups}
+
+      <button
+        onClick={(event) => {
+          event.preventDefault();
           changeDisplayFunction('previewCv');
         }}
       >
