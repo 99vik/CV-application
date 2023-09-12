@@ -1,20 +1,27 @@
 import PropTypes from 'prop-types';
+import ArrowIcon from '../assets/arrow-right.svg';
 
-export default function Form({ data, displayedData, changeDisplayFuntion }) {
+export default function Form({ data, displayedData, changeDisplayFunction }) {
   Form.propTypes = {
     data: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     displayedData: PropTypes.string,
-    changeDisplayFuntion: PropTypes.func,
+    changeDisplayFunction: PropTypes.func,
   };
 
   function displayInputGroup() {
     switch (displayedData) {
       case 'general':
-        return <GeneralInfoGroup />;
+        return (
+          <GeneralInfoGroup changeDisplayFunction={changeDisplayFunction} />
+        );
       case 'education':
-        return <EducationInfoGroup />;
+        return (
+          <EducationInfoGroup changeDisplayFunction={changeDisplayFunction} />
+        );
       case 'experience':
-        return <ExperienceInfoGroup />;
+        return (
+          <ExperienceInfoGroup changeDisplayFunction={changeDisplayFunction} />
+        );
     }
   }
 
@@ -23,7 +30,11 @@ export default function Form({ data, displayedData, changeDisplayFuntion }) {
   return <form action="">{displayInputGroup()}</form>;
 }
 
-function GeneralInfoGroup() {
+function GeneralInfoGroup({ changeDisplayFunction }) {
+  GeneralInfoGroup.propTypes = {
+    changeDisplayFunction: PropTypes.func,
+  };
+
   return (
     <>
       <div className="input-group">
@@ -46,11 +57,23 @@ function GeneralInfoGroup() {
         <label htmlFor="phoneNumber">Phone number</label>
         <input type="tel" name="phoneNumber" id="phoneNumber" />
       </div>
+      <button
+        onClick={(event) => {
+          event.preventDefault;
+          changeDisplayFunction('education');
+        }}
+      >
+        Education <img src={ArrowIcon} alt="arrow" />
+      </button>
     </>
   );
 }
 
-function EducationInfoGroup() {
+function EducationInfoGroup({ changeDisplayFunction }) {
+  EducationInfoGroup.propTypes = {
+    changeDisplayFunction: PropTypes.func,
+  };
+
   return (
     <>
       <div className="input-group">
@@ -69,11 +92,23 @@ function EducationInfoGroup() {
         <label htmlFor="finishDate">Finish date</label>
         <input type="date" name="finishDate" id="finishDate" />
       </div>
+      <button
+        onClick={(event) => {
+          event.preventDefault;
+          changeDisplayFunction('experience');
+        }}
+      >
+        Professional experience <img src={ArrowIcon} alt="arrow" />
+      </button>
     </>
   );
 }
 
-function ExperienceInfoGroup() {
+function ExperienceInfoGroup({ changeDisplayFunction }) {
+  ExperienceInfoGroup.propTypes = {
+    changeDisplayFunction: PropTypes.func,
+  };
+
   return (
     <>
       <div className="input-group">
@@ -100,6 +135,15 @@ function ExperienceInfoGroup() {
         <label htmlFor="finishDate">Finish date</label>
         <input type="date" name="finishDate" id="finishDate" />
       </div>
+      <button
+        onClick={(event) => {
+          event.preventDefault;
+          changeDisplayFunction('previewCv');
+        }}
+      >
+        View your CV
+        <img src={ArrowIcon} alt="arrow" />
+      </button>
     </>
   );
 }

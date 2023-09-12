@@ -14,26 +14,26 @@ export default function CvContainer() {
       <div className="buttons-container">
         <div>
           <button
-            className={currentCvDisplay === 'general' && 'active'}
+            className={currentCvDisplay === 'general' ? 'active' : undefined}
             onClick={() => setCurrentCvDisplay(displayStates[0])}
           >
             General
           </button>
           <button
-            className={currentCvDisplay === 'education' && 'active'}
+            className={currentCvDisplay === 'education' ? 'active' : undefined}
             onClick={() => setCurrentCvDisplay(displayStates[1])}
           >
             Education
           </button>
           <button
-            className={currentCvDisplay === 'experience' && 'active'}
+            className={currentCvDisplay === 'experience' ? 'active' : undefined}
             onClick={() => setCurrentCvDisplay(displayStates[2])}
           >
             Professional Experience
           </button>
         </div>
         <button
-          className={currentCvDisplay === 'previewCv' && 'active'}
+          className={currentCvDisplay === 'previewCv' ? 'active' : undefined}
           onClick={() => setCurrentCvDisplay(displayStates[3])}
         >
           Preview CV

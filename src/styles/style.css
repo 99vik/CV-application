@@ -29,7 +29,7 @@ h1 {
 }
 
 .cv-container {
-    margin: 2rem 4rem;
+    margin: 1rem 10rem;
 }
 
 .buttons-container button {
@@ -72,8 +72,8 @@ h1 {
 form {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    margin-bottom: 2rem;
+    gap: 1.2rem;
+    margin-bottom: 1rem;
 }
 
 .input-group {
@@ -108,5 +108,28 @@ form {
     background-color: whitesmoke;
 }
 
+form > button img {
+    height: 30px;
+}
 
+form > button {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    border-radius: 0.5rem;
+    background-color: var(--theme-color);
+    align-self: flex-end;
+    padding: 0.4rem 1.2rem;
+    border: none;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+form > button:hover {
+    cursor: pointer;
+    background-color: rgb(38, 38, 133);
+}
 
