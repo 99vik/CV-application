@@ -51,7 +51,7 @@ export default function PreviewCv({ data }) {
             <p>{group.startDate ? group.startDate : '-'}</p>
           </div>
           <div className="info-container">
-            <p className="label">Finish name: </p>
+            <p className="label">Finish date: </p>
             <p>{group.finishDate ? group.finishDate : '-'}</p>
           </div>
         </div>
@@ -66,10 +66,50 @@ export default function PreviewCv({ data }) {
     );
   }
 
+  function generateExperienceInfo(experienceInfo) {
+    const groupOutput = experienceInfo.map((group, index) => {
+      return (
+        <div key={index} className="group-info">
+          {index !== 0 ? <hr /> : null}
+          <div className="info-container">
+            <p className="label">Company name: </p>
+            <p>{group.companyName ? group.companyName : '-'}</p>
+          </div>
+          <div className="info-container">
+            <p className="label">Position title: </p>
+            <p>{group.positionTitle ? group.positionTitle : '-'}</p>
+          </div>
+          <div className="info-container">
+            <p className="label">Responsibilities: </p>
+            <p>
+              {group.mainResponsibilities ? group.mainResponsibilities : '-'}
+            </p>
+          </div>
+          <div className="info-container">
+            <p className="label">Start date:: </p>
+            <p>{group.startDate ? group.startDate : '-'}</p>
+          </div>
+          <div className="info-container">
+            <p className="label">Finish date: </p>
+            <p>{group.finishDate ? group.finishDate : '-'}</p>
+          </div>
+        </div>
+      );
+    });
+
+    return (
+      <div>
+        <h1>Professional experience</h1>
+        {groupOutput}
+      </div>
+    );
+  }
+
   return (
     <div className="cv-preview">
       {generateGeneralInfo(data.general)}
       {generateEducationInfo(data.education)}
+      {generateExperienceInfo(data.experience)}
     </div>
   );
 }
