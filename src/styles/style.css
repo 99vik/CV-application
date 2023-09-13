@@ -230,3 +230,19 @@ form > button:hover {
     cursor: pointer;
 }
 
+.cv-preview > button {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    border-radius: 0.5rem;
+    background-color: rgb(112, 112, 112);
+    align-self: center;
+    padding: 0.4rem 1.2rem;
+    border: none;
+    width: fit-content;
+}
+
+.cv-preview > button:hover {
+    background-color: rgb(79, 79, 79);
+    cursor: pointer;
+}

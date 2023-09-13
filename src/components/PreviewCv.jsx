@@ -132,6 +132,13 @@ export default function PreviewCv({ data, changeDisplayFunction }) {
 
   return (
     <div className="cv-preview">
+      <button
+        onClick={() => {
+          alert('Not working');
+        }}
+      >
+        Generate PDF
+      </button>
       {generateGeneralInfo(data.general, changeDisplayFunction)}
       {generateEducationInfo(data.education, changeDisplayFunction)}
       {generateExperienceInfo(data.experience, changeDisplayFunction)}
