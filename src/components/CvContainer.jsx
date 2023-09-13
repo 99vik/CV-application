@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Form from './Form';
 import { CvInformation as emptyCvInfo } from '../CvInformation';
-import PreviewCv from './previewCv';
+import PreviewCv from './PreviewCv';
 
 const displayStates = ['general', 'education', 'experience', 'previewCv'];
 
