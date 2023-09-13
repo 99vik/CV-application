@@ -1,14 +1,23 @@
 import PropTypes from 'prop-types';
 
-export default function PreviewCv({ data }) {
+export default function PreviewCv({ data, changeDisplayFunction }) {
   PreviewCv.propTypes = {
     data: PropTypes.object,
+    changeDisplayFunction: PropTypes.func,
   };
 
-  function generateGeneralInfo(generalInfo) {
+  function generateGeneralInfo(generalInfo, changeDisplayFunction) {
     return (
       <div>
         <h1>General information</h1>
+        <button
+          onClick={(event) => {
+            event.preventDefault();
+            changeDisplayFunction('general');
+          }}
+        >
+          Edit
+        </button>
         <div className="info-container">
           <p className="label">First name: </p>
           <p>{generalInfo.firstName ? generalInfo.firstName : '-'}</p>
@@ -33,7 +42,7 @@ export default function PreviewCv({ data }) {
     );
   }
 
-  function generateEducationInfo(educationInfo) {
+  function generateEducationInfo(educationInfo, changeDisplayFunction) {
     const groupOutput = educationInfo.map((group, index) => {
       return (
         <div key={index} className="group-info">
@@ -61,12 +70,20 @@ export default function PreviewCv({ data }) {
     return (
       <div>
         <h1>Education information</h1>
+        <button
+          onClick={(event) => {
+            event.preventDefault();
+            changeDisplayFunction('education');
+          }}
+        >
+          Edit
+        </button>
         {groupOutput}
       </div>
     );
   }
 
-  function generateExperienceInfo(experienceInfo) {
+  function generateExperienceInfo(experienceInfo, changeDisplayFunction) {
     const groupOutput = experienceInfo.map((group, index) => {
       return (
         <div key={index} className="group-info">
@@ -100,6 +117,14 @@ export default function PreviewCv({ data }) {
     return (
       <div>
         <h1>Professional experience</h1>
+        <button
+          onClick={(event) => {
+            event.preventDefault();
+            changeDisplayFunction('experience');
+          }}
+        >
+          Edit
+        </button>
         {groupOutput}
       </div>
     );
@@ -107,9 +132,9 @@ export default function PreviewCv({ data }) {
 
   return (
     <div className="cv-preview">
-      {generateGeneralInfo(data.general)}
-      {generateEducationInfo(data.education)}
-      {generateExperienceInfo(data.experience)}
+      {generateGeneralInfo(data.general, changeDisplayFunction)}
+      {generateEducationInfo(data.education, changeDisplayFunction)}
+      {generateExperienceInfo(data.experience, changeDisplayFunction)}
     </div>
   );
 }

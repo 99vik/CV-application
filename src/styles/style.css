@@ -195,6 +195,7 @@ form > button:hover {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
+    position: relative;
 }
 
 .cv-preview .group-info {
@@ -208,5 +209,24 @@ form > button:hover {
     width: 90%;
     align-self: center;
     border-top: 1px solid var(--theme-color);
+}
+
+.cv-preview > div > button {
+    position: absolute;
+    top: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    border-radius: 0.5rem;
+    background-color: var(--theme-color);
+    align-self: flex-end;
+    padding: 0.4rem 1.2rem;
+    border: none;
+    width: fit-content;
+}
+
+.cv-preview > div > button:hover {
+    background-color: rgb(41, 31, 93);
+    cursor: pointer;
 }
 

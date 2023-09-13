@@ -78,7 +78,10 @@ export default function CvContainer() {
       </div>
       <div className="display-container">
         {currentCvDisplay === 'previewCv' ? (
-          <PreviewCv data={CvInformation} />
+          <PreviewCv
+            data={CvInformation}
+            changeDisplayFunction={setCurrentCvDisplay}
+          />
         ) : (
           <Form
             data={CvInformation[currentCvDisplay]}
