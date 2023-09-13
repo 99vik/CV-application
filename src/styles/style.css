@@ -76,6 +76,31 @@ form, .input-group {
     margin-bottom: 0.5rem;
 }
 
+.input-group .remove-btn {
+    color: white;
+    background-color: rgb(202, 37, 37);
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    align-self: flex-end;
+    padding: 0.2rem 1rem;
+    border: none;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.remove-btn:hover {
+    background-color: rgb(116, 34, 34);
+    cursor: pointer;
+}
+
+.input-group .remove-btn img {
+    height: 20px;
+}
+
 form hr {
     border-top: 1px solid var(--theme-color);
     margin-bottom: 1rem;
@@ -142,5 +167,46 @@ form > button:first-of-type {
 form > button:hover {
     cursor: pointer;
     background-color: rgb(38, 38, 133);
+}
+
+.cv-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.cv-preview .info-container {
+    font-size: 1rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.cv-preview .info-container p.label {
+    font-weight: bold;
+}
+
+.cv-preview h1 {
+    font-size: 1.4rem;
+    text-align: left;
+    color: var(--theme-color);
+}
+
+.cv-preview > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.cv-preview .group-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.cv-preview .group-info hr {
+    margin: 0.6rem 0;
+    width: 90%;
+    align-self: center;
+    border-top: 1px solid var(--theme-color);
 }
 

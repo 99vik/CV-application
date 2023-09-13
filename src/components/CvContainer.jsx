@@ -40,6 +40,12 @@ export default function CvContainer() {
     setCvInformation(newInfo);
   }
 
+  function removeInfoGroup(infoGroup) {
+    const newInfo = structuredClone(CvInformation);
+    newInfo[infoGroup].pop();
+    setCvInformation(newInfo);
+  }
+
   return (
     <div className="cv-container">
       <div className="buttons-container">
@@ -80,6 +86,7 @@ export default function CvContainer() {
             changeDisplayFunction={setCurrentCvDisplay}
             handleCvInfoChange={handleCvInfoChange}
             addInfoGroup={addInfoGroup}
+            removeInfoGroup={removeInfoGroup}
           />
         )}
       </div>

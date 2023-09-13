@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import ArrowIcon from '../assets/arrow-right.svg';
 import PlusIcon from '../assets/plus-box.svg';
+import CloseIcon from '../assets/close-circle.svg';
 
 export default function Form({
   data,
@@ -8,6 +9,7 @@ export default function Form({
   changeDisplayFunction,
   handleCvInfoChange,
   addInfoGroup,
+  removeInfoGroup,
 }) {
   Form.propTypes = {
     data: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
@@ -15,6 +17,7 @@ export default function Form({
     changeDisplayFunction: PropTypes.func,
     handleCvInfoChange: PropTypes.func,
     addInfoGroup: PropTypes.func,
+    removeInfoGroup: PropTypes.func,
   };
 
   function displayInputGroup() {
@@ -33,6 +36,7 @@ export default function Form({
             changeDisplayFunction={changeDisplayFunction}
             handleCvInfoChange={handleCvInfoChange}
             addInfoGroup={addInfoGroup}
+            removeInfoGroup={removeInfoGroup}
             data={data}
           />
         );
@@ -42,6 +46,7 @@ export default function Form({
             changeDisplayFunction={changeDisplayFunction}
             handleCvInfoChange={handleCvInfoChange}
             addInfoGroup={addInfoGroup}
+            removeInfoGroup={removeInfoGroup}
             data={data}
           />
         );
@@ -136,11 +141,13 @@ function EducationInfoGroup({
   changeDisplayFunction,
   handleCvInfoChange,
   addInfoGroup,
+  removeInfoGroup,
   data,
 }) {
   EducationInfoGroup.propTypes = {
     changeDisplayFunction: PropTypes.func,
     addInfoGroup: PropTypes.func,
+    removeInfoGroup: PropTypes.func,
     handleCvInfoChange: PropTypes.func,
     data: PropTypes.array,
   };
@@ -149,6 +156,21 @@ function EducationInfoGroup({
     return (
       <div className="input-group" key={index}>
         {index !== 0 ? <hr /> : null}
+        {index !== 0 && index === data.length - 1 ? (
+          <>
+            <button
+              className="remove-btn"
+              onClick={(event) => {
+                event.preventDefault();
+                removeInfoGroup('education');
+              }}
+            >
+              Remove
+              <img src={CloseIcon} alt="close" />
+            </button>
+          </>
+        ) : null}
+
         <div className="input-group">
           <label htmlFor={'schoolName' + index}>School name</label>
           <input
@@ -250,11 +272,13 @@ function ExperienceInfoGroup({
   changeDisplayFunction,
   handleCvInfoChange,
   addInfoGroup,
+  removeInfoGroup,
   data,
 }) {
   ExperienceInfoGroup.propTypes = {
     changeDisplayFunction: PropTypes.func,
     addInfoGroup: PropTypes.func,
+    removeInfoGroup: PropTypes.func,
     handleCvInfoChange: PropTypes.func,
     data: PropTypes.array,
   };
@@ -263,6 +287,21 @@ function ExperienceInfoGroup({
     return (
       <div className="input-group" key={index}>
         {index !== 0 ? <hr /> : null}
+        {index !== 0 && index === data.length - 1 ? (
+          <>
+            <button
+              className="remove-btn"
+              onClick={(event) => {
+                event.preventDefault();
+                removeInfoGroup('experience');
+              }}
+            >
+              Remove
+              <img src={CloseIcon} alt="close" />
+            </button>
+          </>
+        ) : null}
+
         <div className="input-group">
           <label htmlFor={'companyName' + index}>Company name</label>
           <input
